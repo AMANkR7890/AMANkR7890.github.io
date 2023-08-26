@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Kalvium Backend task</h1>
+<h2>Aman Kumar-RA2011026010226</h2>
+
+<p id="op"></p>
+<p id="json_op"></p>
+
+
+<script>
+ let url=new URL("https://www.google.com//5/plus/2/minus/3/into/7");
+	
+let path = url.pathname.split('/').slice(1);
+var num1=0;
+var text ={ "question":" ","answer":" "};
+
+for ( let i = 0; i < path.length; i++)
+	{ 
+		if(path[i]=='plus')
+		{   
+		    var output=num1+parseInt(path[++i]);
+			text.question = num1+"+"+path[i];
+			text.answer = output;
+			
+			num1=output;
+			
+		}
+		else if( path[i]=='minus')
+		{
+			var output=num1-parseInt(path[++i]);
+			let v1=text.question;
+			text.question =v1+"-"+path[i];
+			text.answer = output;
+			num1=output;
+			
+		}
+		else if( path[i]=='into')
+		{
+			var output=num1*parseInt(path[++i]);
+			let v1=text.question;
+			text.question =v1+"*"+path[i];
+			text.answer = output;
+			num1=output;
+			
+		}
+		else
+		{
+			num1=parseInt(path[i]);
+		}
+	}
+	console.log(text);
+	document.getElementById("op").innerHTML = "String Output <br>"+ text.question+" = "+text.answer;
+	document.getElementById("json_op").innerHTML = "JSON Output <br>"+ JSON.stringify(text, undefined, 2);
+</script>
+
+
+
+</body>
+</html>
+  
